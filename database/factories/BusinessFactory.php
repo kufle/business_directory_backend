@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Category;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -25,7 +26,8 @@ class BusinessFactory extends Factory
             'contact' => fake()->phoneNumber(),
             'image' => 'default.png',
             'website' => 'www.example.com',
-            'rating' => rand(1,5)
+            'rating' => rand(1,5),
+            'user_id' => User::all()->random()->id,
         ];
     }
 }

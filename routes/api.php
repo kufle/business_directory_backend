@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\API\V1\Auth\AuthSocialController;
+use App\Http\Controllers\API\V1\Auth\LogoutController;
 use App\Http\Controllers\API\V1\BusinessController;
 use App\Http\Controllers\API\V1\CategoryController;
 use App\Http\Controllers\API\V1\RatingController;
@@ -21,5 +22,9 @@ Route::get('/business/{business}', [BusinessController::class, 'show']);
 
 
 Route::middleware('auth:sanctum')->group(function() {
+    Route::post('/business', [BusinessController::class, 'store']);
+    Route::delete('/business/{business}', [BusinessController::class, 'destroy']);
     Route::post('/business/{business}/review', [RatingController::class, 'store']);
+    Route::get('/my-business', [BusinessController::class, 'mybusiness']);
+    Route::post('auth/logout', LogoutController::class);
 });
